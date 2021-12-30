@@ -1,6 +1,8 @@
 const moment = require("moment");
 const client = require("../server");
 
+const { Command } = require("../models");
+
 const { verifyBirthdayMessages } = require("../global/messages");
 
 const verifyBirthday = async (player, target, username) => {
@@ -10,7 +12,29 @@ const verifyBirthday = async (player, target, username) => {
     const today = moment().format("DD/MM");
 
     if (birthday === today) {
-      client.say(target, messages.happyBirthday(username));
+      const command = await Command.findOne({
+        where: { command: "!aniversario" },
+      });
+
+      const json = command.info;
+
+      if (json.date === today) {
+        if (!json.users.includes(username)) {
+          json.users.push(username);
+          await Command.update(
+            { info: json, date: today },
+            { where: { command: command.command } }
+          );
+          client.say(target, messages.happyBirthday(username));
+        }
+      } else {
+        json.users.remove();
+        json.users.push(username);
+        await Command.update(
+          { info: json, date: today },
+          { where: { command: command.command } }
+        );
+      }
     }
   }
 };

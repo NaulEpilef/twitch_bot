@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "back:migrate": "npx sequelize-cli db:migrate:undo",
-    "restart:migrate": "npx sequelize-cli db:migrate:undo && npx sequelize-cli db:migrate"
+    "reset:migrate": "npx sequelize-cli db:migrate:undo && npx sequelize-cli db:migrate",
+    "run:seed": "npx sequelize-cli db:seed:all",
+    "back:seed": "npx sequelize-cli db:seed:undo:all",
+    "reset:seed": "npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:seed:all"
   },
   "keywords": [],
   "author": "",

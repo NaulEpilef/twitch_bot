@@ -7,12 +7,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   Command.init(
     {
-      regex: DataTypes.STRING,
-      description: DataTypes.STRING,
+      command: { type: DataTypes.STRING, primaryKey: true },
+      info: DataTypes.JSON,
     },
     {
       sequelize,
       modelName: "Command",
+      tableName: "commands",
     }
   );
   return Command;
