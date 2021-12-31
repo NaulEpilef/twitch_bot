@@ -1,4 +1,4 @@
-const tmi = require("tmi.js");
+import tmi, { Options } from "tmi.js";
 
 const BOT_NICK = process.env.BOT_NICK;
 const CHANNEL = [process.env.CHANNEL];
@@ -10,8 +10,8 @@ const opts = {
     password: TOKEN,
   },
   channels: CHANNEL,
-};
+} as Options;
 
 const client = new tmi.client(opts);
 
-module.exports = client;
+export default client;

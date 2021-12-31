@@ -1,23 +1,39 @@
 {
   "name": "bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "twitch bot",
   "main": "coracao-do-bot.js",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "back:migrate": "npx sequelize-cli db:migrate:undo",
     "reset:migrate": "npx sequelize-cli db:migrate:undo && npx sequelize-cli db:migrate",
     "run:seed": "npx sequelize-cli db:seed:all",
     "back:seed": "npx sequelize-cli db:seed:undo:all",
-    "reset:seed": "npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:seed:all"
+    "reset:seed": "npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:seed:all",
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify coracao-do-bot.ts",
+    "dev2": "nodemon --watch 'coracao-do-bot.ts' --exec 'ts-node coracao-do-bot.ts' -e ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Luan-Felipe <lfps1999@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^3.7.0",
     "dotenv": "^10.0.0",
+    "moment": "^2.29.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^7.0.0-alpha.2",
+    "prisma": "^3.7.0",
     "tmi.js": "^1.8.5"
+  },
+  "repository": "https://github.com/Naul-Epilef/twitch_bot.git",
+  "devDependencies": {
+    "@types/node": "^17.0.5",
+    "@types/tmi.js": "^1.8.1",
+    "@types/uuid": "^8.3.3",
+    "@types/validator": "^13.7.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
   }
 }
