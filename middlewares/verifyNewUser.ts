@@ -13,14 +13,14 @@ const verifyNewUser = async ({ username }: Request): Promise<Player> => {
   // }
 
   let player = (await prisma.player.findFirst({
-    where: { name: username },
+    where: { username },
   })) as Player;
 
-  if (!player) {
-    player = (await prisma.player.create({
-      data: { name: username },
-    })) as Player;
-  }
+  // if (!player) {
+  //   player = (await prisma.player.create({
+  //     data: { username },
+  //   })) as Player;
+  // }
 
   prisma.$disconnect();
 

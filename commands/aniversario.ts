@@ -39,7 +39,7 @@ const exec = async ({
       if (dateToday > dateBirthday) {
         const player = (await prisma.player.update({
           data: { birthday: date },
-          where: { name: context.username },
+          where: { username: context.username },
         })) as Player;
 
         const d = arr[1].split("/")[0];

@@ -6,7 +6,7 @@ import messageArrive from "./controllers/messageController";
 
 try {
   function joinedChat(address: string, port: number) {
-    console.log(`* Bot entrou no endereço ${address}:${port}`);
+    console.log(`* Bot entrou no endereço ${port}`);
   }
 
   client.on("message", messageArrive);
