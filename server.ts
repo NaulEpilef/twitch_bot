@@ -1,17 +1,18 @@
-import tmi, { Options } from "tmi.js";
+// require("dotenv/config");
+import "dotenv/config";
+import client from "./client";
 
-const BOT_NICK = process.env.BOT_NICK;
-const CHANNEL = [process.env.CHANNEL];
-const TOKEN = process.env.TOKEN;
+import messageArrive from "./controllers/messageController";
 
-const opts = {
-  identity: {
-    username: BOT_NICK,
-    password: TOKEN,
-  },
-  channels: CHANNEL,
-} as Options;
+try {
+  function joinedChat(address: string, port: number) {
+    console.log(`* Bot entrou no endereço ${address}:${port}`);
+  }
 
-const client = new tmi.client(opts);
+  client.on("message", messageArrive);
+  client.on("connected", joinedChat);
 
-export default client;
+  client.connect();
+} catch (err) {
+  console.log(err);
+}

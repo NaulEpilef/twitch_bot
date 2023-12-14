@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import middlewares from "../middlewares";
-import client from "../server";
+import client from "../client";
 
 // import { option } from "tmi.js"
 

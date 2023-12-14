@@ -1,5 +1,5 @@
 import moment from "moment";
-import client from "../server";
+import client from "../client";
 
 import { verifyBirthdayMessages } from "../global/messages";
 

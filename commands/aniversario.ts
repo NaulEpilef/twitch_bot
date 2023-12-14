@@ -1,5 +1,5 @@
 import moment from "moment";
-import client from "../server";
+import client from "../client";
 
 import prisma from "../global/prisma";
 
